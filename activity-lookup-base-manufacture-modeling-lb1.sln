@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "activity-lookup-base-manufacture-modeling-lb1", "activity-lookup-base-manufacture-modeling-lb1\activity-lookup-base-manufacture-modeling-lb1.csproj", "{4303014F-04A3-4CA7-A03B-761F2DF69B2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4303014F-04A3-4CA7-A03B-761F2DF69B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4303014F-04A3-4CA7-A03B-761F2DF69B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4303014F-04A3-4CA7-A03B-761F2DF69B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4303014F-04A3-4CA7-A03B-761F2DF69B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E70D6BF-093F-434F-8F78-B6942145AB2F}
+	EndGlobalSection
+EndGlobal
