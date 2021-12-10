@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 
@@ -13,18 +8,8 @@ namespace activity_lookup_base_manufacture_modeling_lb1
 {
 
     public partial class Form1 : Form
-    {
-        private int N1max = 120, N1 = 120, N2 = 20, N3 = 100, N4 = 80,
-                    t1 = 60, t2 = 60, t3 = 60, t4 = 60,
-                    t0 = 0, dt = 20,
-                    M = 10,
-                    tmax = 1800,      
-            //  tmax = 30 * 24 * 60,
-                    detailsTransAmount = 0;
+    {         
 
-        
-
-        List<Component> K;
         public Form1()
         {
             InitializeComponent();
@@ -32,134 +17,12 @@ namespace activity_lookup_base_manufacture_modeling_lb1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            BeginImitation();
             dgvModelingProtocol.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            while (t0 < tmax)
-            {
-                string modelEvents = "";
-                List<ExActivity> initiatedActivitys;
-                do
-                {
-                    initiatedActivitys = GetInitiatedActivitys();
-                    foreach (ExActivity exActivity in initiatedActivitys)
-                    {
-                        exActivity.algoritm();
-                        modelEvents +=exActivity.ToString();
-
-                    }
-                } while (initiatedActivitys.Count != 0);
-                OutputModelState(modelEvents);
-                t0 += dt;
-            }
-        }
-
-        private void BeginImitation()
-        {
-            K = new List<Component>(5);
-            for (int i = 0; i < 5; i++){
-                K.Add(new Component()
-                {
-                    activities = new List<ExActivity>()
-                });
-            }
-
-
-            // K_1
-            K[0].activities.Add(new ExActivity()
-            {
-                algoritm = () =>
-                {
-                    N1 -= N2;
-                    SetInitiateTime(K[1], K[1].activities[0].tau);
-                    K[0].t += t1;
-                },
-                tau = t1,
-                IsInitiate = () => N1 >= N2,
-                description = $"Цех получил {N2} комплектов деталей"
-            });
-            K[0].t = t1;
-
-
-            // K_2
-            K[1].activities.Add(new ExActivity() {
-                algoritm = () => {
-                    SetInitiateTime(K[3], K[3].activities[0].tau);
-                    K[1].t = double.PositiveInfinity;
-                },
-                tau = t2,
-                IsInitiate = () => N1 <= N3,
-                description = $"Заявка на {N4} деталей сформирована"
-            });
-
-            // K_3
-            K[2].activities.Add(new ExActivity()
-            {
-                algoritm = () =>
-                {
-                    N1 = N1max;
-                    K[2].t = double.PositiveInfinity;
-                },
-                tau = t4,
-                IsInitiate = () => N1 >= N1max,
-                description =  $"{N1 - N1max} деталей отправлены обратно в цен. ск."
-            });
-
-            // K_4
-            K[3].activities.Add(new ExActivity()
-            {
-                algoritm = () => { 
-                    SetInitiateTime(K[4], K[4].activities[0].tau); 
-                    K[3].t = double.PositiveInfinity; 
-                },
-                tau = t3,
-                IsInitiate = () => true,
-                description = $"{N4} деталей укомплектованы цен. ск."
-            });
-
-            // K_5
-            K[4].activities.Add(new ExActivity() {
-                algoritm = () => {
-                    N1 += N4;
-                    SetInitiateTime(K[3], K[3].activities[0].tau);
-                    K[4].t = double.PositiveInfinity;
-                },
-                tau = t4,
-                IsInitiate = () => true,
-                description = $"{N4} деталей доставлены"
-            });
-
-        }
-
-        private List<ExActivity> GetInitiatedActivitys()
-        {
-            List<ExActivity> initiatedActivities = new List<ExActivity>();
-            while (true)
-            {
-                foreach (Component k in K)
-                {
-                    if (k.t <= t0)
-                    {
-                        foreach (ExActivity activity in k.activities)
-                        {
-                            if (activity.IsInitiate())
-                            {
-                                initiatedActivities.Add(activity);
-                            }
-                        }
-                    }
-                }
-                return initiatedActivities;
-            }
-        }
-
-        private void SetInitiateTime(Component K, double time) {
-            double newTime = t0 + time;
-            if(K.t > newTime)
-                K.t = newTime; 
+            
         }
 
         private void OutputModelState(string modelEvents)
@@ -167,15 +30,103 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             int rowId = dgvModelingProtocol.Rows.Add();
             DataGridViewRow row = dgvModelingProtocol.Rows[rowId];
 
-            row.Cells["colModelTime"].Value = t0.ToString();
-            row.Cells["colN1"].Value = N1.ToString();
+            row.Cells["colModelTime"].Value = SimulationModel.t0.ToString();
+            row.Cells["colN1"].Value = SimulationModel.N1.ToString();
             row.Cells["ColModelEvent"].Value = modelEvents;
+            row.Cells["coldetailsOnRoad"].Value = SimulationModel.DeatilsOnRoad;
+            row.Cells["colGuildStatus"].Value = SimulationModel.IsGuildWorking()? "Работает": "Простаивает";
 
-            int detailsOnRoad = 0;
-            row.Cells["coldetailsOnRoad"].Value = "???";
-            row.Cells["colGuildStatus"].Value = K[0].t + K[0].activities[0].tau > t0? "Работает": "Простаивает";
+            if (SimulationModel.speed > 0)
+            {
+                dgvModelingProtocol.Refresh();
+                dgvModelingProtocol.FirstDisplayedScrollingRowIndex = dgvModelingProtocol.RowCount - 1;
+            }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgvModelingProtocol.Rows.Clear();
+            SimulationModel.t0 = 0;
+            SimulationModel.t1 = Convert.ToInt32(udt1.Value);
+            SimulationModel.t2 = Convert.ToInt32(udt2.Value);
+            SimulationModel.t3 = Convert.ToInt32(udt3.Value);
+            SimulationModel.t4 = Convert.ToInt32(udt4.Value);
 
+            SimulationModel.N1 = Convert.ToInt32(udN1.Value);
+            SimulationModel.N1max = Convert.ToInt32(udN1.Value);
+            SimulationModel.N2 = Convert.ToInt32(udN2.Value);
+            SimulationModel.N3 = Convert.ToInt32(udN3.Value);
+            SimulationModel.N4 = Convert.ToInt32(udN4.Value);
+
+            SimulationModel.speed = Convert.ToInt32(udImmitationSpeed.Value);
+
+            SimulationModel.InitiateActivitys();
+
+            while (SimulationModel.t0 < SimulationModel.tmax)
+            {
+                string modelEvents = "";
+                List<int> events = new List<int>();
+                SimulationModel.events.Add(events);
+                List<Activity> initiatedActivitys;
+                do
+                {
+                    initiatedActivitys = SimulationModel.GetInitiatedActivitys();
+                    foreach (Activity activity in initiatedActivitys)
+                    {
+                        modelEvents += activity.ToString();
+                        activity.Invoke();
+                        events.Add(SimulationModel.GetIndexOfActivity(activity));
+                    }
+                } while (initiatedActivitys.Count != 0);
+                OutputModelState(modelEvents);
+                SimulationModel.t0 += SimulationModel.dt;
+                Thread.Sleep(Convert.ToInt32(SimulationModel.speed * 1000));
+            }
+        }
+
+        private void udN1_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.N1 = Convert.ToInt32(udN1.Value);
+        }
+
+        private void udN2_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.N2 = Convert.ToInt32(udN2.Value);
+        }
+
+        private void udN3_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.N3 = Convert.ToInt32(udN3.Value);
+        }
+
+        private void udN4_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.N4 = Convert.ToInt32(udN4.Value);
+        }
+
+        private void udt1_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.t1 = Convert.ToInt32(udt1.Value);
+        }
+
+        private void udt2_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.t2 = Convert.ToInt32(udt2.Value);
+        }
+
+        private void udt3_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.t3 = Convert.ToInt32(udt3.Value);
+        }
+
+        private void udt4_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.t4 = Convert.ToInt32(udt4.Value);
+        }
+
+        private void udImmitationSpeed_ValueChanged(object sender, EventArgs e)
+        {
+            SimulationModel.speed = Convert.ToInt32(udImmitationSpeed.Value);
         }
     }
 

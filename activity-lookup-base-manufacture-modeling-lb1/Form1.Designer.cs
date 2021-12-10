@@ -29,12 +29,17 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbGuild = new System.Windows.Forms.Label();
             this.lbGuildStorage = new System.Windows.Forms.Label();
             this.lbCenterStorage = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvModelingProtocol = new System.Windows.Forms.DataGridView();
+            this.colModelTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColModelEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coldetailsOnRoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGuildStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.udN1 = new System.Windows.Forms.NumericUpDown();
             this.lbN1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,11 +60,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.udImmitationSpeed = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.colModelTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColModelEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coldetailsOnRoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGuildStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelingProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN2)).BeginInit();
@@ -126,11 +126,51 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.colGuildStatus});
             this.dgvModelingProtocol.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgvModelingProtocol.Location = new System.Drawing.Point(0, 0);
+            this.dgvModelingProtocol.Margin = new System.Windows.Forms.Padding(5, 5, 3, 3);
             this.dgvModelingProtocol.Name = "dgvModelingProtocol";
             this.dgvModelingProtocol.ReadOnly = true;
             this.dgvModelingProtocol.ShowEditingIcon = false;
             this.dgvModelingProtocol.Size = new System.Drawing.Size(571, 496);
             this.dgvModelingProtocol.TabIndex = 4;
+            // 
+            // colModelTime
+            // 
+            this.colModelTime.HeaderText = "Модельное время";
+            this.colModelTime.Name = "colModelTime";
+            this.colModelTime.ReadOnly = true;
+            // 
+            // colN1
+            // 
+            this.colN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colN1.HeaderText = "N1";
+            this.colN1.Name = "colN1";
+            this.colN1.ReadOnly = true;
+            this.colN1.Width = 46;
+            // 
+            // ColModelEvent
+            // 
+            this.ColModelEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColModelEvent.HeaderText = "События";
+            this.ColModelEvent.Name = "ColModelEvent";
+            this.ColModelEvent.ReadOnly = true;
+            this.ColModelEvent.Width = 76;
+            // 
+            // coldetailsOnRoad
+            // 
+            this.coldetailsOnRoad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.coldetailsOnRoad.HeaderText = "Деталей в дороге";
+            this.coldetailsOnRoad.Name = "coldetailsOnRoad";
+            this.coldetailsOnRoad.ReadOnly = true;
+            this.coldetailsOnRoad.Width = 81;
+            // 
+            // colGuildStatus
+            // 
+            this.colGuildStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colGuildStatus.HeaderText = "Состояние цеха";
+            this.colGuildStatus.Name = "colGuildStatus";
+            this.colGuildStatus.ReadOnly = true;
             // 
             // udN1
             // 
@@ -149,6 +189,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udN1.ValueChanged += new System.EventHandler(this.udN1_ValueChanged);
             // 
             // lbN1
             // 
@@ -185,6 +226,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udN2.ValueChanged += new System.EventHandler(this.udN2_ValueChanged);
             // 
             // label2
             // 
@@ -212,6 +254,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udN3.ValueChanged += new System.EventHandler(this.udN3_ValueChanged);
             // 
             // label3
             // 
@@ -235,10 +278,11 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.udN4.Size = new System.Drawing.Size(44, 20);
             this.udN4.TabIndex = 11;
             this.udN4.Value = new decimal(new int[] {
-            120,
+            80,
             0,
             0,
             0});
+            this.udN4.ValueChanged += new System.EventHandler(this.udN4_ValueChanged);
             // 
             // label4
             // 
@@ -266,6 +310,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udt1.ValueChanged += new System.EventHandler(this.udt1_ValueChanged);
             // 
             // label5
             // 
@@ -293,6 +338,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udt2.ValueChanged += new System.EventHandler(this.udt2_ValueChanged);
             // 
             // label6
             // 
@@ -320,6 +366,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udt3.ValueChanged += new System.EventHandler(this.udt3_ValueChanged);
             // 
             // label7
             // 
@@ -347,6 +394,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             0,
             0,
             0});
+            this.udt4.ValueChanged += new System.EventHandler(this.udt4_ValueChanged);
             // 
             // label8
             // 
@@ -369,11 +417,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.udImmitationSpeed.Name = "udImmitationSpeed";
             this.udImmitationSpeed.Size = new System.Drawing.Size(44, 20);
             this.udImmitationSpeed.TabIndex = 22;
-            this.udImmitationSpeed.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            this.udImmitationSpeed.ValueChanged += new System.EventHandler(this.udImmitationSpeed_ValueChanged);
             // 
             // label9
             // 
@@ -393,45 +437,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.button1.TabIndex = 24;
             this.button1.Text = "Старт";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // colModelTime
-            // 
-            this.colModelTime.HeaderText = "Модельное время";
-            this.colModelTime.Name = "colModelTime";
-            this.colModelTime.ReadOnly = true;
-            // 
-            // colN1
-            // 
-            this.colN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colN1.HeaderText = "N1";
-            this.colN1.Name = "colN1";
-            this.colN1.ReadOnly = true;
-            this.colN1.Width = 46;
-            // 
-            // ColModelEvent
-            // 
-            this.ColModelEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColModelEvent.HeaderText = "События";
-            this.ColModelEvent.Name = "ColModelEvent";
-            this.ColModelEvent.ReadOnly = true;
-            this.ColModelEvent.Width = 76;
-            // 
-            // coldetailsOnRoad
-            // 
-            this.coldetailsOnRoad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.coldetailsOnRoad.HeaderText = "Деталей в дороге";
-            this.coldetailsOnRoad.Name = "coldetailsOnRoad";
-            this.coldetailsOnRoad.ReadOnly = true;
-            this.coldetailsOnRoad.Width = 81;
-            // 
-            // colGuildStatus
-            // 
-            this.colGuildStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colGuildStatus.HeaderText = "Состояние цеха";
-            this.colGuildStatus.Name = "colGuildStatus";
-            this.colGuildStatus.ReadOnly = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
