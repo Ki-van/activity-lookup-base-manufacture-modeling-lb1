@@ -4,16 +4,12 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Timers;
 using System.Drawing;
-using System.Threading.Tasks;
-using Microsoft.Office.Interop.Excel;
 
 namespace activity_lookup_base_manufacture_modeling_lb1
 {
 
     public partial class Form1 : Form
-    {
-        CancellationTokenSource tokenSource;
-        Task task;
+    {         
 
         public Form1()
         {
@@ -101,7 +97,8 @@ namespace activity_lookup_base_manufacture_modeling_lb1
                 dgvModelingProtocol.FirstDisplayedScrollingRowIndex = dgvModelingProtocol.RowCount - 1;
             }
         }
-        private void RunModeling()
+
+        private void button1_Click(object sender, EventArgs e)
         {
             dgvModelingProtocol.Rows.Clear();
             SimulationModel.t0 = 0;
@@ -120,7 +117,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
 
             SimulationModel.InitiateActivitys();
 
-            while (SimulationModel.t0 < SimulationModel.tmax && !tokenSource.IsCancellationRequested)
+            while (SimulationModel.t0 < SimulationModel.tmax)
             {
                 string modelEvents = "";
                 List<int> events = new List<int>();
@@ -134,32 +131,20 @@ namespace activity_lookup_base_manufacture_modeling_lb1
                         modelEvents += activity.ToString();
                         activity.Invoke();
                         int index = SimulationModel.GetIndexOfActivity(activity);
-                        events.Add(index);
-
+                        events.Add(index); 
+ 
                     }
                 } while (initiatedActivitys.Count != 0);
-                BeginInvoke((Action<string>)OutputModelState, new object[] { modelEvents });
+                OutputModelState(modelEvents);
                 if (SimulationModel.IsGuildWorking())
                     SimulationModel.guildWorkingCount++;
                 SimulationModel.t0 += SimulationModel.dt;
                 SimulationModel.guildTotalLoad += SimulationModel.N1;
-                Thread.Sleep(Convert.ToInt32((SimulationModel.speed * 1000) / 10));
+                Thread.Sleep(Convert.ToInt32((SimulationModel.speed * 1000)/4));
             }
 
             OutputModelIndicators();
-            BeginInvoke((System.Action)(() =>
-            {
-                tabs.SelectedIndex = 1;
-
-            }));
-
- }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tokenSource = new CancellationTokenSource();
-            task = Task.Factory.StartNew(RunModeling, tokenSource.Token);
-
-           
+            tabs.SelectedIndex = 1;
         }
 
         private void OutputModelIndicators()
@@ -223,35 +208,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         {
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            tokenSource?.Cancel();
-        }
-
-        private void copyAlltoClipboard()
-        {
-            dgvModelingProtocol.SelectAll();
-            DataObject dataObj = dgvModelingProtocol.GetClipboardContent();
-            if (dataObj != null)
-                Clipboard.SetDataObject(dataObj);
-        }
-
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            copyAlltoClipboard();
-            Microsoft.Office.Interop.Excel.Application xlexcel;
-            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-            xlexcel = new Microsoft.Office.Interop.Excel.Application();
-            xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
-            CR.Select();
-            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-
-        }
+        
     }
 
 }

@@ -30,7 +30,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbGuild = new System.Windows.Forms.Label();
             this.lbGuildStorage = new System.Windows.Forms.Label();
             this.lbCenterStorage = new System.Windows.Forms.Label();
@@ -72,8 +72,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.lbIncomingCaret = new System.Windows.Forms.Label();
             this.lbOutcomingCaret = new System.Windows.Forms.Label();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelingProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN2)).BeginInit();
@@ -159,8 +157,8 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // ColModelEvent
             // 
             this.ColModelEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColModelEvent.HeaderText = "События";
             this.ColModelEvent.Name = "ColModelEvent";
             this.ColModelEvent.ReadOnly = true;
@@ -417,11 +415,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udImmitationSpeed
             // 
             this.udImmitationSpeed.AutoSize = true;
-            this.udImmitationSpeed.Increment = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             this.udImmitationSpeed.Location = new System.Drawing.Point(122, 117);
             this.udImmitationSpeed.Maximum = new decimal(new int[] {
             1000,
@@ -438,14 +431,14 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(173, 119);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 23;
-            this.label9.Text = "сек/10/такт";
+            this.label9.Text = "сек/4/такт";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(836, 463);
+            this.button1.Location = new System.Drawing.Point(931, 463);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
@@ -591,34 +584,11 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.lbOutcomingCaret.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOutcomingCaret.Visible = false;
             // 
-            // btnStop
-            // 
-            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStop.Location = new System.Drawing.Point(933, 463);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 29;
-            this.btnStop.Text = "Стоп";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(583, 463);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(114, 23);
-            this.btnExport.TabIndex = 30;
-            this.btnExport.Text = "Экспорт протокола";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 496);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbOutcomingCaret);
             this.Controls.Add(this.lbIncomingCaret);
             this.Controls.Add(this.tabs);
@@ -693,8 +663,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label lbIncomingCaret;
         private System.Windows.Forms.Label lbOutcomingCaret;
-        private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Button btnExport;
     }
 }
 
