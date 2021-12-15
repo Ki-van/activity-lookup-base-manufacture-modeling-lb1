@@ -29,11 +29,11 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbGuild = new System.Windows.Forms.Label();
             this.lbGuildStorage = new System.Windows.Forms.Label();
             this.lbCenterStorage = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dgvModelingProtocol = new System.Windows.Forms.DataGridView();
             this.colModelTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +60,18 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.udImmitationSpeed = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tabs = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabIndicators = new System.Windows.Forms.TabPage();
+            this.lbAvgLoad = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbProbobility = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbCost = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.lbIncomingCaret = new System.Windows.Forms.Label();
+            this.lbOutcomingCaret = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelingProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN2)).BeginInit();
@@ -70,13 +82,16 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             ((System.ComponentModel.ISupportInitialize)(this.udt3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udt4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udImmitationSpeed)).BeginInit();
+            this.tabs.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabIndicators.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbGuild
             // 
             this.lbGuild.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbGuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbGuild.Location = new System.Drawing.Point(602, 139);
+            this.lbGuild.Location = new System.Drawing.Point(602, 95);
             this.lbGuild.Name = "lbGuild";
             this.lbGuild.Size = new System.Drawing.Size(124, 82);
             this.lbGuild.TabIndex = 0;
@@ -86,7 +101,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // lbGuildStorage
             // 
             this.lbGuildStorage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbGuildStorage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbGuildStorage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbGuildStorage.Location = new System.Drawing.Point(602, 13);
             this.lbGuildStorage.Name = "lbGuildStorage";
             this.lbGuildStorage.Size = new System.Drawing.Size(124, 82);
@@ -104,14 +119,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.lbCenterStorage.TabIndex = 2;
             this.lbCenterStorage.Text = "Центральный склад";
             this.lbCenterStorage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(742, 50);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(135, 10);
-            this.panel1.TabIndex = 3;
             // 
             // dgvModelingProtocol
             // 
@@ -150,8 +157,8 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // ColModelEvent
             // 
             this.ColModelEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColModelEvent.HeaderText = "События";
             this.ColModelEvent.Name = "ColModelEvent";
             this.ColModelEvent.ReadOnly = true;
@@ -175,7 +182,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udN1
             // 
             this.udN1.AutoSize = true;
-            this.udN1.Location = new System.Drawing.Point(626, 273);
+            this.udN1.Location = new System.Drawing.Point(33, 1);
             this.udN1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -194,7 +201,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // lbN1
             // 
             this.lbN1.AutoSize = true;
-            this.lbN1.Location = new System.Drawing.Point(599, 275);
+            this.lbN1.Location = new System.Drawing.Point(6, 3);
             this.lbN1.Name = "lbN1";
             this.lbN1.Size = new System.Drawing.Size(24, 13);
             this.lbN1.TabIndex = 6;
@@ -203,7 +210,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(599, 301);
+            this.label1.Location = new System.Drawing.Point(6, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 8;
@@ -212,7 +219,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udN2
             // 
             this.udN2.AutoSize = true;
-            this.udN2.Location = new System.Drawing.Point(626, 299);
+            this.udN2.Location = new System.Drawing.Point(33, 27);
             this.udN2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -231,7 +238,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(599, 327);
+            this.label2.Location = new System.Drawing.Point(6, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 10;
@@ -240,7 +247,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udN3
             // 
             this.udN3.AutoSize = true;
-            this.udN3.Location = new System.Drawing.Point(626, 325);
+            this.udN3.Location = new System.Drawing.Point(33, 53);
             this.udN3.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -259,7 +266,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(599, 353);
+            this.label3.Location = new System.Drawing.Point(6, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 12;
@@ -268,7 +275,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udN4
             // 
             this.udN4.AutoSize = true;
-            this.udN4.Location = new System.Drawing.Point(626, 351);
+            this.udN4.Location = new System.Drawing.Point(33, 79);
             this.udN4.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -287,7 +294,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(689, 275);
+            this.label4.Location = new System.Drawing.Point(96, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 14;
@@ -296,7 +303,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udt1
             // 
             this.udt1.AutoSize = true;
-            this.udt1.Location = new System.Drawing.Point(716, 273);
+            this.udt1.Location = new System.Drawing.Point(123, 1);
             this.udt1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -315,7 +322,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(689, 301);
+            this.label5.Location = new System.Drawing.Point(96, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 13);
             this.label5.TabIndex = 16;
@@ -324,7 +331,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udt2
             // 
             this.udt2.AutoSize = true;
-            this.udt2.Location = new System.Drawing.Point(716, 299);
+            this.udt2.Location = new System.Drawing.Point(123, 27);
             this.udt2.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -343,7 +350,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(689, 327);
+            this.label6.Location = new System.Drawing.Point(96, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 18;
@@ -352,7 +359,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udt3
             // 
             this.udt3.AutoSize = true;
-            this.udt3.Location = new System.Drawing.Point(716, 325);
+            this.udt3.Location = new System.Drawing.Point(123, 53);
             this.udt3.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -371,7 +378,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(689, 353);
+            this.label7.Location = new System.Drawing.Point(96, 81);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 13);
             this.label7.TabIndex = 20;
@@ -380,7 +387,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udt4
             // 
             this.udt4.AutoSize = true;
-            this.udt4.Location = new System.Drawing.Point(716, 351);
+            this.udt4.Location = new System.Drawing.Point(123, 79);
             this.udt4.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -399,7 +406,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(599, 391);
+            this.label8.Location = new System.Drawing.Point(6, 119);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 13);
             this.label8.TabIndex = 21;
@@ -408,7 +415,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // udImmitationSpeed
             // 
             this.udImmitationSpeed.AutoSize = true;
-            this.udImmitationSpeed.Location = new System.Drawing.Point(715, 389);
+            this.udImmitationSpeed.Location = new System.Drawing.Point(122, 117);
             this.udImmitationSpeed.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -422,11 +429,11 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(766, 391);
+            this.label9.Location = new System.Drawing.Point(173, 119);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 23;
-            this.label9.Text = "сек/такт";
+            this.label9.Text = "сек/4/такт";
             // 
             // button1
             // 
@@ -439,33 +446,154 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 3);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(130, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Транспортные расходы:";
+            // 
+            // tabs
+            // 
+            this.tabs.Controls.Add(this.tabPage1);
+            this.tabs.Controls.Add(this.tabIndicators);
+            this.tabs.Location = new System.Drawing.Point(577, 244);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(431, 213);
+            this.tabs.TabIndex = 26;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.lbN1);
+            this.tabPage1.Controls.Add(this.udN1);
+            this.tabPage1.Controls.Add(this.udN2);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.udImmitationSpeed);
+            this.tabPage1.Controls.Add(this.udN3);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.udN4);
+            this.tabPage1.Controls.Add(this.udt4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.udt1);
+            this.tabPage1.Controls.Add(this.udt3);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.udt2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(423, 187);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Параметры";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabIndicators
+            // 
+            this.tabIndicators.Controls.Add(this.lbAvgLoad);
+            this.tabIndicators.Controls.Add(this.label12);
+            this.tabIndicators.Controls.Add(this.lbProbobility);
+            this.tabIndicators.Controls.Add(this.label11);
+            this.tabIndicators.Controls.Add(this.lbCost);
+            this.tabIndicators.Controls.Add(this.label10);
+            this.tabIndicators.Location = new System.Drawing.Point(4, 22);
+            this.tabIndicators.Name = "tabIndicators";
+            this.tabIndicators.Padding = new System.Windows.Forms.Padding(3);
+            this.tabIndicators.Size = new System.Drawing.Size(423, 187);
+            this.tabIndicators.TabIndex = 1;
+            this.tabIndicators.Text = "Показатели работы";
+            this.tabIndicators.UseVisualStyleBackColor = true;
+            this.tabIndicators.Click += new System.EventHandler(this.tabIndicators_Click);
+            // 
+            // lbAvgLoad
+            // 
+            this.lbAvgLoad.AutoSize = true;
+            this.lbAvgLoad.Location = new System.Drawing.Point(202, 49);
+            this.lbAvgLoad.Name = "lbAvgLoad";
+            this.lbAvgLoad.Size = new System.Drawing.Size(13, 13);
+            this.lbAvgLoad.TabIndex = 30;
+            this.lbAvgLoad.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(190, 13);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Средняя загрузка цехового склада:";
+            // 
+            // lbProbobility
+            // 
+            this.lbProbobility.AutoSize = true;
+            this.lbProbobility.Location = new System.Drawing.Point(202, 26);
+            this.lbProbobility.Name = "lbProbobility";
+            this.lbProbobility.Size = new System.Drawing.Size(13, 13);
+            this.lbProbobility.TabIndex = 28;
+            this.lbProbobility.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(148, 13);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Вероятность простоя цеха: ";
+            // 
+            // lbCost
+            // 
+            this.lbCost.AutoSize = true;
+            this.lbCost.Location = new System.Drawing.Point(202, 3);
+            this.lbCost.Name = "lbCost";
+            this.lbCost.Size = new System.Drawing.Size(13, 13);
+            this.lbCost.TabIndex = 26;
+            this.lbCost.Text = "0";
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // lbIncomingCaret
+            // 
+            this.lbIncomingCaret.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbIncomingCaret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbIncomingCaret.Location = new System.Drawing.Point(732, 13);
+            this.lbIncomingCaret.Name = "lbIncomingCaret";
+            this.lbIncomingCaret.Size = new System.Drawing.Size(40, 40);
+            this.lbIncomingCaret.TabIndex = 27;
+            this.lbIncomingCaret.Text = "80";
+            this.lbIncomingCaret.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbIncomingCaret.Visible = false;
+            // 
+            // lbOutcomingCaret
+            // 
+            this.lbOutcomingCaret.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbOutcomingCaret.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbOutcomingCaret.Location = new System.Drawing.Point(732, 55);
+            this.lbOutcomingCaret.Name = "lbOutcomingCaret";
+            this.lbOutcomingCaret.Size = new System.Drawing.Size(40, 40);
+            this.lbOutcomingCaret.TabIndex = 28;
+            this.lbOutcomingCaret.Text = "53";
+            this.lbOutcomingCaret.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbOutcomingCaret.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 496);
+            this.Controls.Add(this.lbOutcomingCaret);
+            this.Controls.Add(this.lbIncomingCaret);
+            this.Controls.Add(this.tabs);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.udImmitationSpeed);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.udt4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.udt3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.udt2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.udt1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.udN4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.udN3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.udN2);
-            this.Controls.Add(this.lbN1);
-            this.Controls.Add(this.udN1);
             this.Controls.Add(this.dgvModelingProtocol);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbCenterStorage);
             this.Controls.Add(this.lbGuildStorage);
             this.Controls.Add(this.lbGuild);
@@ -483,8 +611,12 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             ((System.ComponentModel.ISupportInitialize)(this.udt3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udt4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udImmitationSpeed)).EndInit();
+            this.tabs.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabIndicators.ResumeLayout(false);
+            this.tabIndicators.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -493,7 +625,6 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private System.Windows.Forms.Label lbGuild;
         private System.Windows.Forms.Label lbGuildStorage;
         private System.Windows.Forms.Label lbCenterStorage;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvModelingProtocol;
         private System.Windows.Forms.NumericUpDown udN1;
         private System.Windows.Forms.Label lbN1;
@@ -520,6 +651,18 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private System.Windows.Forms.DataGridViewTextBoxColumn ColModelEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn coldetailsOnRoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGuildStatus;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TabControl tabs;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabIndicators;
+        private System.Windows.Forms.Label lbAvgLoad;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbProbobility;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbCost;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label lbIncomingCaret;
+        private System.Windows.Forms.Label lbOutcomingCaret;
     }
 }
 
