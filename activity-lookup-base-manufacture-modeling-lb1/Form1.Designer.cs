@@ -30,7 +30,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbGuild = new System.Windows.Forms.Label();
             this.lbGuildStorage = new System.Windows.Forms.Label();
             this.lbCenterStorage = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.lbIncomingCaret = new System.Windows.Forms.Label();
             this.lbOutcomingCaret = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModelingProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udN2)).BeginInit();
@@ -157,8 +158,8 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             // ColModelEvent
             // 
             this.ColModelEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColModelEvent.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColModelEvent.HeaderText = "События";
             this.ColModelEvent.Name = "ColModelEvent";
             this.ColModelEvent.ReadOnly = true;
@@ -584,11 +585,22 @@ namespace activity_lookup_base_manufacture_modeling_lb1
             this.lbOutcomingCaret.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOutcomingCaret.Visible = false;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(581, 463);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(120, 23);
+            this.btnExport.TabIndex = 29;
+            this.btnExport.Text = "Экспорт протокола";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1020, 496);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lbOutcomingCaret);
             this.Controls.Add(this.lbIncomingCaret);
             this.Controls.Add(this.tabs);
@@ -663,6 +675,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label lbIncomingCaret;
         private System.Windows.Forms.Label lbOutcomingCaret;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
