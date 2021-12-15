@@ -40,7 +40,7 @@ namespace activity_lookup_base_manufacture_modeling_lb1
         {
             dt = 20;
             M = 10;
-             tmax = 30 * 24 * 60;
+            tmax = 30 * 24 * 60;
             //tmax = 2000;
         }
 
